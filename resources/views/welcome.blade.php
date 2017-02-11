@@ -80,7 +80,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Rendu Laravel de Victor C.M.
                 </div>
 
                 <div class="links">
