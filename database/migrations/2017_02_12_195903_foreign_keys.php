@@ -14,7 +14,12 @@ class ForeignKeys extends Migration
     public function up()
     {
         Schema::table('articles', function(Blueprint $table) {
-           $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('commentaires', function(Blueprint $table) {
+            $table->foreign('article_id')->references('id')->on('articles');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -25,6 +30,6 @@ class ForeignKeys extends Migration
      */
     public function down()
     {
-        //
+
     }
 }

@@ -57,6 +57,7 @@
                         <li><a href="{{ url('/home') }}">Home</a></li>
                         <li><a href="{{ url('/article') }}">Blog</a></li>
                         <li><a href="{{ url('/article/create') }}">Publier</a></li>
+                        <li><a href="{{ url('/commentaire') }}">Commentaires</a></li>
                         <li><a href="{{ url('/user') }}">Profil</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
