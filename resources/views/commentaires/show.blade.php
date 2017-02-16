@@ -11,7 +11,7 @@
                         <br>
                         <br>
 
-                        <strong>{{ $commentaire->article }}</strong>
+                        <strong>{{ $commentaire->user->name }}</strong>
 
                         <br>
                         <a href="{{ route('commentaire.edit', $commentaire->id) }}" class="btn btn-primary">Modifier</a>

@@ -25,6 +25,13 @@
                             <input type="submit" value="Supprimer" class="btn btn-danger">
                         </form>
                         <br>
+                        <p>Partager cet article sur les RS:
+                        </p>
+                        @include('layouts.share', [
+                                'url' => request()->fullUrl(),
+                                'description' => 'This is really cool link',
+                                'image' => 'http://placehold.it/300x300?text=Cool+link'
+                            ])
                         <br>
                         <h3>Commentaires</h3><br>
                         @foreach($article->commentaires as $commentaire)

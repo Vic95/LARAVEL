@@ -10,6 +10,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Publier un article</div>
 
+
+
+
                     <div class="panel-body">
                         <form action="{{ route('article.store') }}" method="POST">
                             {{ csrf_field() }}
@@ -22,9 +25,14 @@
 
                             <input type="submit" value="Publier" class="btn btn-info">
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
 @endsection

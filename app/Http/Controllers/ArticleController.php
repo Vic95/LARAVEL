@@ -119,7 +119,10 @@ class ArticleController extends Controller
             ->fill($input)
             ->save();
 
-        return redirect()->route('article.index')->with('success', 'L\'article a bien été modifié');;
+        return redirect()->route('article.index')->with('success', 'L\'article a bien été modifié');
+        $path = $request->file('avatar')->store('avatars');
+
+        return $path;
     }
 
     /**
