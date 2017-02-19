@@ -87,6 +87,7 @@ class ComposerStaticInit21d34852c726ae84ef0d3a416c20d11c
         'C' => 
         array (
             'Cron\\' => 5,
+            'Conner\\Likeable\\' => 16,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -222,6 +223,10 @@ class ComposerStaticInit21d34852c726ae84ef0d3a416c20d11c
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Conner\\Likeable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rtconner/laravel-likeable/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -276,6 +281,7 @@ class ComposerStaticInit21d34852c726ae84ef0d3a416c20d11c
         'CommentairesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CommentairesTableSeeder.php',
         'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_05_214503_create_articles_table.php',
         'CreateCommentairesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_12_185114_create_commentaires_table.php',
+        'CreateLikeableTables' => __DIR__ . '/../..' . '/database/migrations/2014_09_10_065447_create_likeable_tables.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

@@ -31,4 +31,6 @@ Route::get('/admin', function() {
     return view('admin');
 });
 
+Route::post('article/{id}/like', ['as' => 'article.like', 'uses' => 'ArticleController@like']);
 
+Route::post('article/{id}/unlike', ['as' => 'article.unlike', 'uses' => 'ArticleController@unlike']);
