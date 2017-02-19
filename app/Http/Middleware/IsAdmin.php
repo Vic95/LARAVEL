@@ -21,7 +21,7 @@ class IsAdmin
         }
 
         return redirect()
-            ->route('article.index')
+            ->route('home')
             ->with('success', 'Vous n\'avez pas les droits nécessaires.');
     }
 }

@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Commentaire;
+use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CommentaireController extends Controller
+class AdminArticleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('show', 'index');
-        $user = Auth::user();
-        $this->middleware(function ($request, $next) {
-            $this->user = Auth::user();
-
-            return $next($request);
-        });
+        $this->middleware('isAdmin');
     }
     /**
      * Display a listing of the resource.
@@ -25,9 +19,9 @@ class CommentaireController extends Controller
      */
     public function index()
     {
-        $commentaires = Commentaire::paginate(10);
+        $articles = Article::paginate(10);
 
-        return view('commentaires.index', compact('commentaires'));
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -37,100 +31,111 @@ class CommentaireController extends Controller
      */
     public function create()
     {
-        return view('commentaires.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,
             [
+                'title' => 'required|min:5',
                 'content' => 'required|min:10'
             ],
             [
+                'title.required' => 'Titre requis',
+                'title.min' => 'Minimum 5 caractères',
+
                 'content.required' => 'Contenu requis',
                 'content.min' => 'Minimum 10 caractères'
             ]);
 
-        $commentaire = new Commentaire();
+        $article = new Article();
         $input = $request->input();
-        $input['article_id'] = Auth::article()->id;
+        $input['user_id'] = Auth::user()->id;
 
-        $commentaire
+        $article
             ->fill($input)
             ->save();
 
-        return redirect()->route('commentaire.index')->with('success', 'Le commentaire a bien été publié');
+        return redirect()->route('article.index')->with('success', 'L\'article a bien été publié');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $commentaire = Commentaire::find($id);
-        return view('commentaires.show', compact('commentaire'));
+        $article = Article::find($id);
+        return view('articles.show', compact('article'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $commentaire = Commentaire::find($id);
-        return view('commentaires.edit', compact('commentaire'));
+        $article = Article::find($id);
+        return view('articles.edit', compact('article'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request,
             [
+                'title' => 'required|min:5',
                 'content' => 'required|min:10'
             ],
             [
+                'title.required' => 'Titre requis',
+                'title.min' => 'Minimum 5 caractères',
+
                 'content.required' => 'Contenu requis',
                 'content.min' => 'Minimum 10 caractères'
             ]);
 
-        $commentaire = Commentaire::find($id);
+        $article = Article::find($id);
         $input = $request->input();
 
-        $commentaire
+        $article
             ->fill($input)
             ->save();
 
-        return redirect()->route('commentaire.index')->with('success', 'Le commentaire a bien été modifié');;
+        return redirect()->route('article.index')->with('success', 'L\'article a bien été modifié');
+        $path = $request->file('avatar')->store('avatars');
+
+        return $path;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $commentaire = Commentaire::find($id);
+        $article = Article::find($id);
         $article->delete();
 
-        return redirect()->route('commentaire.index')->with('success', 'Le commentaire a bien été supprimé');
+        return redirect()->route('article.index')->with('success', 'L\'article a bien été supprimé');
     }
 }

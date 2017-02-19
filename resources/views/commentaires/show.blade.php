@@ -15,12 +15,13 @@
 
                         <br>
                         <a href="{{ route('commentaire.edit', $commentaire->id) }}" class="btn btn-primary">Modifier</a>
-
+                        @if (Auth::check() && Auth::user()->isAdmin)
                         <form method="POST" action="{{ route('commentaire.destroy', $commentaire->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="delete">
                             <input type="submit" value="Supprimer" class="btn btn-danger">
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

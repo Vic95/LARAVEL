@@ -63,7 +63,7 @@ class ArticleController extends Controller
             ->fill($input)
             ->save();
 
-        return redirect()->route('article.index')->with('success', 'L\'article a bien été publié');;
+        return redirect()->route('article.index')->with('success', 'L\'article a bien été publié');
     }
 
     /**

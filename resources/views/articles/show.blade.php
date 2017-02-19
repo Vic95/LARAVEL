@@ -26,12 +26,13 @@
                         <br>
 
                         <a href="{{ route('article.edit', $article->id) }}" class="btn btn-primary">Modifier</a>
-
+                        @if (Auth::check() && Auth::user()->isAdmin)
                         <form method="POST" action="{{ route('article.destroy', $article->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="delete">
                             <input type="submit" value="Supprimer" class="btn btn-danger">
                         </form>
+                        @endif
                         <br>
                         <p style="text-align: center;">Partager cet article sur les RS:<br>
 

@@ -28,8 +28,12 @@ Route::get('/user', function() {
 });
 
 Route::get('/admin', function() {
-    return view('admin');
+    return view('dashboard');
 });
+
+Route::resource('/adminarticle', 'AdminArticleController');
+
+Route::resource('/admincommentaire', 'AdminCommentaireController');
 
 Route::post('article/{id}/like', ['as' => 'article.like', 'uses' => 'ArticleController@like']);
 
